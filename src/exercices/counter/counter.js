@@ -1,13 +1,3 @@
-export const findArrayChildKey = parentObject => {
-  let arrayChildKey = null;
-  parentObject && Object.keys(parentObject).some(childrenKey => {
-    if (Array.isArray(parentObject[childrenKey])) {
-      arrayChildKey = childrenKey;
-    }
-  });
-  return arrayChildKey;
-};
-
 export const countChildren = parentElement => {
   if (!Array.isArray(parentElement)) {
     return parentElement;
@@ -23,5 +13,15 @@ export const countChildren = parentElement => {
       [`${arrayChildKey}`]: countChildren(element[arrayChildKey]),
     }
   })
+};
+
+export const findArrayChildKey = parentObject => {
+  let arrayChildKey = null;
+  parentObject && Object.keys(parentObject).some(childrenKey => {
+    if (Array.isArray(parentObject[childrenKey])) {
+      arrayChildKey = childrenKey;
+    }
+  });
+  return arrayChildKey;
 };
 
