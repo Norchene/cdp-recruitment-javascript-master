@@ -8,20 +8,19 @@ export const findArrayChildKey = parentObject => {
   return arrayChildKey;
 };
 
-export const countChildren = parentObjects => {
-  if (!Array.isArray(parentObjects)) {
-    return parentObjects;
+export const countChildren = parentElement => {
+  if (!Array.isArray(parentElement)) {
+    return parentElement;
   }
-  return parentObjects.map(parentObject => {
-    let arrayChildKey = findArrayChildKey(parentObject);
+  return parentElement.map(element => {
+    const arrayChildKey = findArrayChildKey(element);
     if (!arrayChildKey) {
-      return parentObject;
-    } else {
-      const nameWithChildrenNumber = `${parentObject.name} [${parentObject[arrayChildKey].length}]`;
-      return {
-        name: nameWithChildrenNumber,
-        [`${arrayChildKey}`]: countChildren(parentObject[arrayChildKey]),
-      }
+      return element;
+    }
+    const nameWithChildrenNumber = `${element.name} [${element[arrayChildKey].length}]`;
+    return {
+      name: nameWithChildrenNumber,
+      [`${arrayChildKey}`]: countChildren(element[arrayChildKey]),
     }
   })
 };
