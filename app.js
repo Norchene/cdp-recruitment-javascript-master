@@ -12,8 +12,13 @@ const server = http.createServer((req, res) => {
 
 const init = () => {
   const args = process.argv.slice(2);
-  const arg = args[0].split('=');
-  chooseExercise(arg);
+  if (args.length > 0) {
+    const arg = args[0].split('=');
+    chooseExercise(arg);
+  } else {
+    console.log('Missing argument !')
+  }
+
 };
 
 server.listen(port, hostname, () => {
