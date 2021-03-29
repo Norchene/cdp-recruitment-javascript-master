@@ -5,7 +5,7 @@
   "description": "Nourchene cdp recruitment javascript master",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "keywords": [],
   "author": "Nourchene",
